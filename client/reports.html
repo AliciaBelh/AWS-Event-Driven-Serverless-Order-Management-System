@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -26,11 +26,16 @@
       <section class="card">
         <h2>Coming soon</h2>
         <p class="muted">
-          Later: call GET /reports/deleted-orders, then show a small URL textbox + copy button.
+          Later: call GET /reports/deleted-orders, then show a small URL textbox
+          + copy button.
         </p>
       </section>
     </main>
 
     <script src="app/config.js"></script>
+    <script type="module">
+      // utils is loaded as an ES module in pages that need it later.
+      // (No logic yet in this step.)
+    </script>
   </body>
 </html>
