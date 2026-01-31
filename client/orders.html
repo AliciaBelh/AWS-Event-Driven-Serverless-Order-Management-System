@@ -20,21 +20,32 @@
     <main class="container">
       <header class="page-header">
         <h1>Orders</h1>
-        <p class="muted">CRUD operations will be added step-by-step.</p>
       </header>
 
       <section class="card">
-        <h2>Coming soon</h2>
-        <p class="muted">
-          Next step: add Read buttons (GET /orders, GET /orders/{orderId}).
-        </p>
+        <h2>Read</h2>
+
+        <div class="row">
+          <button id="listBtn">Get All Orders</button>
+        </div>
+
+        <div class="row">
+          <input
+            id="getId"
+            type="text"
+            placeholder="Order ID for GET /orders/{orderId}"
+          />
+          <button id="getBtn">Get By ID</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Result</h2>
+        <pre id="result" class="output"></pre>
       </section>
     </main>
 
     <script src="app/config.js"></script>
-    <script type="module">
-      // utils is loaded as an ES module in pages that need it later.
-      // (No logic yet in this step.)
-    </script>
+    <script type="module" src="app/orders.js"></script>
   </body>
 </html>
