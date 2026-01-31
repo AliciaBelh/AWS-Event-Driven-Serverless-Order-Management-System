@@ -70,3 +70,8 @@ body {
   background: #f9fafb;
   font-weight: 600;
 }
+
+#downloadUrl {
+  overflow-x: auto;
+  white-space: nowrap;
+}

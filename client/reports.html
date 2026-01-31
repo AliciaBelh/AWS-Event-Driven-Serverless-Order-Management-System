@@ -20,22 +20,42 @@
     <main class="container">
       <header class="page-header">
         <h1>Reports</h1>
-        <p class="muted">PDF report UI will be added later.</p>
       </header>
 
       <section class="card">
-        <h2>Coming soon</h2>
-        <p class="muted">
-          Later: call GET /reports/deleted-orders, then show a small URL textbox
-          + copy button.
-        </p>
+        <section class="card">
+          <h2>Deleted Orders PDF Report</h2>
+          <p class="muted">
+            Click Generate to create a PDF summary in S3. The API returns a
+            presigned URL. Copy the URL, open a new tab, and paste it there.
+          </p>
+
+          <button id="genBtn">Generate Report</button>
+        </section>
+
+        <section class="card">
+          <h2>Download URL</h2>
+
+          <div class="row">
+            <input
+              id="downloadUrl"
+              type="text"
+              placeholder="Generate a report to get a URL..."
+              readonly
+            />
+            <button id="copyBtn" title="Copy URL">📋</button>
+          </div>
+
+          <p id="urlHint" class="muted"></p>
+        </section>
+      </section>
+      <section class="card">
+        <h2>Result</h2>
+        <pre id="result" class="output"></pre>
       </section>
     </main>
 
     <script src="app/config.js"></script>
-    <script type="module">
-      // utils is loaded as an ES module in pages that need it later.
-      // (No logic yet in this step.)
-    </script>
+    <script type="module" src="app/reports.js"></script>
   </body>
 </html>
