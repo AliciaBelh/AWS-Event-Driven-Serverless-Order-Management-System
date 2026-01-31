@@ -49,21 +49,54 @@
 
           <button id="createBtn">Create Order</button>
         </section>
+        <section class="card">
+          <h2>Read</h2>
 
-        <h2>Read</h2>
+          <div class="row">
+            <button id="listBtn">Get All Orders</button>
+          </div>
 
-        <div class="row">
-          <button id="listBtn">Get All Orders</button>
-        </div>
+          <div class="row">
+            <input
+              id="getId"
+              type="text"
+              placeholder="Order ID for GET /orders/{orderId}"
+            />
+            <button id="getBtn">Get By ID</button>
+          </div>
+        </section>
 
-        <div class="row">
-          <input
-            id="getId"
-            type="text"
-            placeholder="Order ID for GET /orders/{orderId}"
-          />
-          <button id="getBtn">Get By ID</button>
-        </div>
+        <section class="card">
+          <h2>Update</h2>
+
+          <div class="grid">
+            <label>
+              Order ID
+              <input id="updateId" type="text" placeholder="Order ID" />
+            </label>
+
+            <label>
+              New Description (optional)
+              <input
+                id="updateDesc"
+                type="text"
+                placeholder="Leave empty to keep current"
+              />
+            </label>
+
+            <label>
+              New Price (optional)
+              <input
+                id="updatePrice"
+                type="number"
+                step="0.01"
+                placeholder="Leave empty to keep current"
+              />
+            </label>
+          </div>
+
+          <button id="updateBtn">Update Order</button>
+        </section>
       </section>
 
       <section class="card">
