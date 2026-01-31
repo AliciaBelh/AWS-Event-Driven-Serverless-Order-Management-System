@@ -2,14 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Order Management System</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Order Management</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Event-Driven Order Management System</h1>
+    <nav class="nav">
+      <div class="nav-inner">
+        <div class="brand">Order Management</div>
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="orders.html">Orders</a>
+        <a class="nav-link" href="subscriptions.html">Subscriptions</a>
+        <a class="nav-link" href="reports.html">Reports</a>
+      </div>
+    </nav>
 
-    <p>Client is running.</p>
+    <main class="container">
+      <header class="page-header">
+        <h1>Home</h1>
+      </header>
 
-    <script src="app.js"></script>
+      <section class="card">
+        <h2>Pages</h2>
+        <ul>
+          <li><b>Orders</b>: CRUD operations</li>
+          <li><b>Subscriptions</b>: subscribe/unsubscribe email</li>
+          <li><b>Reports</b>: generate deleted-orders PDF + copy URL</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="app/config.js"></script>
+    <script type="module">
+      // utils is loaded as an ES module in pages that need it later.
+      // (No logic yet in this step.)
+    </script>
   </body>
 </html>

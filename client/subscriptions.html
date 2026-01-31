@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscriptions | Order Management</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-inner">
+        <div class="brand">Order Management</div>
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="orders.html">Orders</a>
+        <a class="nav-link active" href="subscriptions.html">Subscriptions</a>
+        <a class="nav-link" href="reports.html">Reports</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <header class="page-header">
+        <h1>Subscriptions</h1>
+      </header>
+
+      <section class="card">
+        <section class="card">
+          <h2>Subscribe</h2>
+          <p class="muted">
+            After subscribing, you must confirm via the email from SNS before
+            you’ll receive notifications.
+          </p>
+
+          <div class="row">
+            <input id="subEmail" type="text" placeholder="Email address" />
+            <button id="subBtn">Subscribe</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Unsubscribe</h2>
+          <p class="muted">
+            Unsubscribes this email from deletion notifications.
+          </p>
+
+          <div class="row">
+            <input id="unsubEmail" type="text" placeholder="Email address" />
+            <button id="unsubBtn">Unsubscribe</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="card">
+        <h2>Result</h2>
+        <pre id="result" class="output"></pre>
+      </section>
+    </main>
+
+    <script src="app/config.js"></script>
+    <script type="module" src="app/subscriptions.js"></script>
+  </body>
+</html>
