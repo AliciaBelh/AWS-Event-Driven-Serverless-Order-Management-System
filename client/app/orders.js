@@ -18,6 +18,9 @@ const updateIdInput = document.getElementById("updateId");
 const updateDescInput = document.getElementById("updateDesc");
 const updatePriceInput = document.getElementById("updatePrice");
 
+// Delete UI
+const deleteBtn = document.getElementById("deleteBtn");
+const deleteIdInput = document.getElementById("deleteId");
 
 function showError(err) {
   setText(
@@ -141,6 +144,36 @@ updateBtn.addEventListener("click", async () => {
     setJson(resultEl, {
       message: "Order updated successfully",
       updatedOrder: data,
+    });
+  } catch (err) {
+    showError(err);
+  }
+});
+
+// -------- DELETE: Delete order --------
+deleteBtn.addEventListener("click", async () => {
+  const orderId = deleteIdInput.value.trim();
+  if (!orderId) {
+    setText(resultEl, "Please enter an orderId to delete.");
+    return;
+  }
+
+  const confirmed = window.confirm(`Delete order ${orderId}?`);
+  if (!confirmed) return;
+
+  try {
+    setLoading(resultEl, "Deleting order...");
+
+    const data = await apiFetch(`/orders/${encodeURIComponent(orderId)}`, {
+      method: "DELETE",
+    });
+
+    deleteIdInput.value = "";
+
+    setJson(resultEl, {
+      message: "Order deleted successfully",
+      response: data,
+      note: "Backup + notifications run asynchronously via EventBridge.",
     });
   } catch (err) {
     showError(err);
