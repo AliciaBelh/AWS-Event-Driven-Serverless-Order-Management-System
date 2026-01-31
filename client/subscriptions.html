@@ -20,21 +20,42 @@
     <main class="container">
       <header class="page-header">
         <h1>Subscriptions</h1>
-        <p class="muted">Subscribe/unsubscribe UI will be added later.</p>
       </header>
 
       <section class="card">
-        <h2>Coming soon</h2>
-        <p class="muted">
-          Later: POST /notifications/subscribe and /notifications/unsubscribe.
-        </p>
+        <section class="card">
+          <h2>Subscribe</h2>
+          <p class="muted">
+            After subscribing, you must confirm via the email from SNS before
+            you’ll receive notifications.
+          </p>
+
+          <div class="row">
+            <input id="subEmail" type="text" placeholder="Email address" />
+            <button id="subBtn">Subscribe</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Unsubscribe</h2>
+          <p class="muted">
+            Unsubscribes this email from deletion notifications.
+          </p>
+
+          <div class="row">
+            <input id="unsubEmail" type="text" placeholder="Email address" />
+            <button id="unsubBtn">Unsubscribe</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="card">
+        <h2>Result</h2>
+        <pre id="result" class="output"></pre>
       </section>
     </main>
 
     <script src="app/config.js"></script>
-    <script type="module">
-      // utils is loaded as an ES module in pages that need it later.
-      // (No logic yet in this step.)
-    </script>
+    <script type="module" src="app/subscriptions.js"></script>
   </body>
 </html>
