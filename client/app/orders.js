@@ -1,14 +1,25 @@
 import { apiFetch, setJson, setLoading, setText } from "./utils.js";
 
 const resultEl = document.getElementById("result");
+
+// Read UI
 const listBtn = document.getElementById("listBtn");
 const getBtn = document.getElementById("getBtn");
 const getIdInput = document.getElementById("getId");
 
+// Create UI
+const createBtn = document.getElementById("createBtn");
+const createDescInput = document.getElementById("createDesc");
+const createPriceInput = document.getElementById("createPrice");
+
 function showError(err) {
-  setText(resultEl, `Error: ${err.message}${err.status ? ` (HTTP ${err.status})` : ""}`);
+  setText(
+    resultEl,
+    `Error: ${err.message}${err.status ? ` (HTTP ${err.status})` : ""}`
+  );
 }
 
+// -------- READ: Get all orders --------
 listBtn.addEventListener("click", async () => {
   try {
     setLoading(resultEl, "Loading orders...");
@@ -19,6 +30,7 @@ listBtn.addEventListener("click", async () => {
   }
 });
 
+// -------- READ: Get order by ID --------
 getBtn.addEventListener("click", async () => {
   const orderId = getIdInput.value.trim();
   if (!orderId) {
@@ -28,12 +40,53 @@ getBtn.addEventListener("click", async () => {
 
   try {
     setLoading(resultEl, "Loading order...");
-    const data = await apiFetch(`/orders/${encodeURIComponent(orderId)}`, { method: "GET" });
+    const data = await apiFetch(`/orders/${encodeURIComponent(orderId)}`, {
+      method: "GET",
+    });
     setJson(resultEl, data);
   } catch (err) {
     showError(err);
   }
 });
 
+// -------- CREATE: Create order --------
+createBtn.addEventListener("click", async () => {
+  const orderDescription = createDescInput.value.trim();
+  const priceRaw = createPriceInput.value.trim();
+
+  if (!orderDescription) {
+    setText(resultEl, "Please enter a description.");
+    return;
+  }
+
+  const price = Number(priceRaw);
+  if (!priceRaw || Number.isNaN(price) || price < 0) {
+    setText(resultEl, "Please enter a valid non-negative price.");
+    return;
+  }
+
+  try {
+    setLoading(resultEl, "Creating order...");
+
+    const payload = { orderDescription, price };
+
+    const data = await apiFetch("/orders", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+
+    // Optional UX: clear inputs after success
+    createDescInput.value = "";
+    createPriceInput.value = "";
+
+    setJson(resultEl, {
+      message: "Order created successfully",
+      createdOrder: data,
+    });
+  } catch (err) {
+    showError(err);
+  }
+});
+
 // Initial message
-setText(resultEl, "Ready. Click 'Get All Orders' to start.");
+setText(resultEl, "Ready. Create an order or use Read actions.");
